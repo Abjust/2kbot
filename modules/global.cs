@@ -1,23 +1,23 @@
-﻿namespace Mirai.Net_2kBot.Modules
+﻿namespace Net_2kBot.modules
 {
-    public static class global
+    public static class Global
     {
-        public static long last_call;
-        public static long time_now;
-        public static int cd = 40;
-        public static string[] ops;
-        public static string[] blocklist;
-        public static string path = Directory.GetCurrentDirectory();
-        public static string[] ignores =
+        public static long LastCall;
+        public static long TimeNow;
+        public static readonly int Cd = 40;
+        public static string[]? Ops;
+        public static string[]? Blocklist;
+        public static readonly string Path = Directory.GetCurrentDirectory();
+        public static readonly string[] Ignores =
                 {
                     "748029973",
                     "2265453790",
                     "2286003479",
                     "3594648576",
-                    "3573523379."
+                    "3573523379"
                 };
-        public static string api_key = "";
-        public static string qq = "";
-        public static string verify_key = "";
+        public const string ApiKey = "";
+        public const string Qq = "";
+        public static readonly string VerifyKey = "";
     };
 }

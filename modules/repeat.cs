@@ -2,7 +2,7 @@
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Utils.Scaffolds;
 
-namespace Mirai.Net_2kBot.Modules
+namespace Net_2kBot.modules
 {
     public static class Repeat
     {
@@ -26,8 +26,8 @@ namespace Mirai.Net_2kBot.Modules
                 };
             if (@base is GroupMessageReceiver receiver)
             {
-                //复读机
-                if (receiver.MessageChain.GetPlainMessage().StartsWith("/echo") == true)
+                // 复读机
+                if (receiver.MessageChain.GetPlainMessage().StartsWith("/echo"))
                 {
                     string[] result = receiver.MessageChain.GetPlainMessage().Split(" ");
                     if (result.Length > 1)
@@ -35,7 +35,7 @@ namespace Mirai.Net_2kBot.Modules
                         try
                         {
                             string results = "";
-                            if (global.ignores.Contains(receiver.Sender.Id) == false)
+                            if (Global.Ignores.Contains(receiver.Sender.Id) == false)
                             {
                                 for (int i = 1; i < result.Length; i++)
                                 {
@@ -53,7 +53,10 @@ namespace Mirai.Net_2kBot.Modules
                             {
                                 await receiver.SendMessageAsync(results);
                             }
-                            catch { }
+                            catch
+                            {
+                                Console.WriteLine("群消息发送失败");
+                            }
                         }
                         catch
                         {
@@ -61,7 +64,10 @@ namespace Mirai.Net_2kBot.Modules
                             {
                                 await receiver.SendMessageAsync("油饼食不食？");
                             }
-                            catch { }
+                            catch
+                            {
+                                Console.WriteLine("群消息发送失败：油饼食不食？");
+                            }
                         }
                     }
                     else
@@ -70,11 +76,11 @@ namespace Mirai.Net_2kBot.Modules
                         {
                             await receiver.SendMessageAsync("你个sb难道没发觉到少了些什么？");
                         }
-                        catch { }
+                        catch {Console.WriteLine("群消息发送失败：你个sb难道没发觉到少了些什么？"); }
                     }
                 }
-                //主动复读
-                else if (global.ignores.Contains(receiver.Sender.Id) == false)
+                // 主动复读
+                else if (Global.Ignores.Contains(receiver.Sender.Id) == false)
                 {
                     foreach (string item in repeatwords)
                     {

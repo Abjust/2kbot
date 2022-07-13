@@ -2,7 +2,7 @@
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Utils.Scaffolds;
 
-namespace Mirai.Net_2kBot.Modules
+namespace Net_2kBot.modules
 {
     public static class Zuan
     {
@@ -43,9 +43,9 @@ namespace Mirai.Net_2kBot.Modules
                          "如果你觉得我哪里不对，请一定要告诉我，反正我也不会改，你别憋出病来",
                          "你（  ）什么时候（  ）啊"
                         };
-                        Random r = new Random();
+                        Random r = new();
                         int index = r.Next(words.Length);
-                        var messageChain = new MessageChainBuilder()
+                        MessageChain? messageChain = new MessageChainBuilder()
                         .At(receiver.Sender.Id)
                         .Plain(" ")
                         .Plain(words[index])
@@ -54,7 +54,10 @@ namespace Mirai.Net_2kBot.Modules
                         {
                             await receiver.SendMessageAsync(messageChain);
                         }
-                        catch { }
+                        catch
+                        {
+                            Console.WriteLine("祖安失败（恼");
+                        }
                     }
                 }
             }

@@ -3,17 +3,17 @@ using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Scaffolds;
 
-namespace Mirai.Net_2kBot.Modules
+namespace Net_2kBot.modules
 {
-    public static class CLI
+    public static class Cli
     {
         public static async void Execute(MessageReceiverBase @base)
         {
             if (@base is FriendMessageReceiver receiver)
             {
-                if (receiver.MessageChain.GetPlainMessage().ToLower().StartsWith("/send") == true)
+                if (receiver.MessageChain.GetPlainMessage().ToLower().StartsWith("/send"))
                 {
-                    string[] text = receiver.MessageChain.GetPlainMessage().ToString().Split(" ");
+                    string[] text = receiver.MessageChain.GetPlainMessage().Split(" ");
                     if (text.Length >= 3)
                     {
                         string results = "";
@@ -32,7 +32,10 @@ namespace Mirai.Net_2kBot.Modules
                         {
                             await MessageManager.SendGroupMessageAsync(text[1], results);
                         }
-                        catch { }
+                        catch
+                        {
+                            Console.WriteLine("群消息发送失败");
+                        }
                     }
                     else
                     {

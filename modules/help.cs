@@ -3,7 +3,7 @@ using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Utils.Scaffolds;
 
-namespace Mirai.Net_2kBot.Modules
+namespace Net_2kBot.modules
 {
     public static class Help
     {
@@ -24,7 +24,10 @@ namespace Mirai.Net_2kBot.Modules
                         "5.叫人功能\r\n" +
                         "详情请用/help指令");
                     }
-                    catch { }
+                    catch
+                    {
+                        Console.WriteLine("菜单消息发送失败");
+                    }
                 }
                 //帮助
                 var indexs = new List<string>
